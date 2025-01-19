@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+	box-sizing: border-box
+}
+
+@layer base {
+	@font-face {
+		font-family: 'Cairo';
+		font-style: normal;
+		font-display: swap;
+		src: url(/webfonts/Cairo.ttf) format('truetype');
+	}
+
+	@font-face {
+		font-family: 'Gotham';
+		font-style: normal;
+		font-display: swap;
+		font-weight: 400;
+		src: url(/webfonts/Gotham-Light.ttf) format('truetype');
+	}
+
+	@font-face {
+		font-family: 'Gotham';
+		font-style: normal;
+		font-weight: 600;
+		font-display: swap;
+		src: url(/webfonts/Gotham-Medium.otf) format('opentype');
+	}
+
+	@font-face {
+		font-family: 'Gotham';
+		font-style: normal;
+		font-weight: 700;
+		font-display: swap;
+		src: url(/webfonts/Gotham-Bold.otf) format('opentype');
+	}
+
+
+}
+
+
+body {
+	@apply font-normal bg-secondary-color text-primary-color;
+	overflow-x: hidden
+}
+
+html[lang="en"] {
+	@apply font-english
+}
+
+html[lang="ar"] {
+	@apply font-arabic
+}
+
+.nav-item.active {
+	@apply text-primary-color;
+	position: relative;
+}
+
+.nav-item.active::after {
+	@apply bg-primary-color;
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	border-radius: 1px;
+	transform: translateX(-50%);
+	width: 100%;
+	height: 2px;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	-ms-border-radius: 1px;
+	-o-border-radius: 1px;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+}
