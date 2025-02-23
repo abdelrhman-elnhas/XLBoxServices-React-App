@@ -3,7 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdAlternateEmail } from "react-icons/md";
 import { HashLink } from "react-router-hash-link";
-import logoH from "/images/logoH.svg";
+import logoH from "/images/logoFooter.png";
 import { NavLink } from "react-router-dom";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
@@ -26,18 +26,10 @@ const Footer = () => {
               <div className="flex flex-col items-center justify-center gap-12 mx-auto mb-4 lg:justify-start">
                 <img src={logoH} height={164} width={100} alt="XLBox Logo" />
                 <div className="flex items-center justify-center gap-3">
-                  <NavLink>
-                    <FaXTwitter className="text-primary-color" />
-                  </NavLink>
-                  <NavLink>
-                    <IoLogoInstagram className="text-primary-color" />
-                  </NavLink>
-                  <NavLink>
-                    <FaSnapchat className="text-primary-color" />
-                  </NavLink>
-                  <NavLink>
-                    <PiTiktokLogo className="text-primary-color" />
-                  </NavLink>
+                  <FaXTwitter className="text-primary-color" />
+                  <IoLogoInstagram className="text-primary-color" />
+                  <FaSnapchat className="text-primary-color" />
+                  <PiTiktokLogo className="text-primary-color" />
                 </div>
               </div>
 
@@ -49,7 +41,7 @@ const Footer = () => {
                 <ul className="mt-3 space-y-2 text-start ">
                   <li>
                     <IoLocationOutline className="inline mr-2 text-primary-color" />
-                    {t("Munchen | Germany")}
+                    {t("Dresden | Germany")}
                   </li>
                   <li>
                     <NavLink
@@ -62,11 +54,11 @@ const Footer = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="https://wa.me/+0559943499"
+                      to="https://wa.me/+4917632582194"
                       className="flex items-center text-white transition hover:text-primary-color"
                     >
                       <FaWhatsapp className="mr-2 text-primary-color" />
-                      +0559943499
+                      +4917632582194
                     </NavLink>
                   </li>
                 </ul>

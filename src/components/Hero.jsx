@@ -7,7 +7,7 @@ const Hero = () => {
     <section
       id=""
       className="flex flex-col relative items-center justify-start h-[calc(100vh-70px)] py-16 text-center text-primary-color bg-hero-bg bg-cover bg-no-repeat after:bg-hero-tex after:w-full after:h-full after:absolute after:bg-no-repeat after:bg-cover after:top-0 after:left-0"
-      style={{ backgroundPosition: "center -30px" }}
+      style={{ backgroundPosition: "center -20px" }}
     >
       <div className="container flex items-start justify-center mx-auto mt-[-20px]">
         <motion.h1

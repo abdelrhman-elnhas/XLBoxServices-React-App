@@ -11,9 +11,11 @@ import { useEffect } from "react";
 import Imprint from "./pages/Imprint";
 import { FaWhatsapp } from "react-icons/fa";
 import Button from "./components/Button";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (location.hash) {
@@ -29,25 +31,29 @@ function App() {
   const definedRoutes = [
     "/",
     "/categories",
-    "/categories/:categoryId",
-    "terms-conditions",
-    "privacy-policy",
+    "/categories/:id",
+    "/terms-conditions",
+    "/privacy-policy",
+    "/imprint",
   ];
 
   const isDefinedRoute = definedRoutes.some((route) =>
-    location.pathname.match(new RegExp(`^${route.replace(/:\w+/g, "\\w+")}$`))
+    location.pathname.match(new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`))
   );
 
   return (
     <>
       <Navbar />
       <Button
-        classes="p-1 bg-[#25D366] rounded-lg w-12 shadow-lg hover:scale-105 transition h-12 z-10 fixed bottom-10 flex items-center justify-center rtl:left-20 rtl:right-unset ltr:right-20 ltr:left-unset"
-        handleClick={() => window.open("https://wa.me/+0559943499", "_blank")}
+        classes="py-1 px-3 gap-2 text-third-color bg-[#25D366] rounded-lg shadow-lg hover:scale-105 transition h-12 z-10 fixed bottom-10 flex items-center justify-center rtl:left-[9%] rtl:right-unset ltr:right-[9%] ltr:left-unset"
+        handleClick={() =>
+          window.open("https://wa.me/+4917632582194", "_blank")
+        }
       >
         <FaWhatsapp className="text-2xl text-third-color" />
+        {t("Ask us")}
       </Button>
-      <main>
+      <main className="relative">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/categories" element={<CategoriesPage />} />

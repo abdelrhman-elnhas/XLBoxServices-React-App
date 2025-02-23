@@ -78,9 +78,9 @@ const LanguageToggler = ({ position }) => {
             currentLanguage === "en"
               ? "English"
               : currentLanguage === "de"
-              ? "German"
+              ? "Deutsch"
               : currentLanguage === "ar"
-              ? "Arabic"
+              ? "العربية"
               : "English"
           )}{" "}
           <FaCaretDown className="text-primary-color group-hover:text-secondary-color" />
@@ -90,7 +90,7 @@ const LanguageToggler = ({ position }) => {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className={`absolute z-10 w-44 py-2 mt-2 divide-y divide-gray-100 rounded-md shadow-lg border-primary-color bg-slate-100  ${
+          className={`absolute z-50 w-44 py-2 mt-2 divide-y divide-gray-100 rounded-md shadow-lg border-primary-color bg-slate-100  ${
             position === "end" ? "end-0" : "start-0"
           }`}
           role="menu"
@@ -101,7 +101,7 @@ const LanguageToggler = ({ position }) => {
               role="menuitem"
               onClick={() => changeLanguage("en")}
             >
-              {t("English")}
+              English
             </button>
           </div>
 
@@ -111,17 +111,17 @@ const LanguageToggler = ({ position }) => {
               role="menuitem"
               onClick={() => changeLanguage("de")}
             >
-              {t("German")}
+              Deutsch
             </button>
           </div>
 
           <div>
             <button
-              className="block w-full h-full px-4 py-2 text-sm text-secondary-color text-start hover:bg-primary-color/25"
+              className="block w-full h-full px-4 py-2 text-sm font-bold text-secondary-color text-start hover:bg-primary-color/25 font-arabic"
               role="menuitem"
               onClick={() => changeLanguage("ar")}
             >
-              {t("Arabic")}
+              العربية
             </button>
           </div>
         </div>

@@ -1,0 +1,18 @@
+# Handle React Frontend Routes
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/backend/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+# Redirect backend routes to the backend folder
+RewriteCond %{REQUEST_URI} ^/backend/
+RewriteRule ^backend/(.*)$ /backend/$1 [L]
+
+# Ensure headers are passed correctly
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, DELETE"
+    Header always set Access-Control-Allow-Headers "Authorization, Content-Type, X-Requested-With, X-CSRF-Token"
+</IfModule>

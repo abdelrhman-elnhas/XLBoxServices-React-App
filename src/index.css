@@ -42,13 +42,23 @@
 
 }
 
+html {
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+}
+
 
 body {
 	@apply font-normal bg-secondary-color text-primary-color;
-	overflow-x: hidden
+	overflow-x: hidden;
 }
 
 html[lang="en"] {
+	@apply font-english
+}
+
+html[lang="de"] {
 	@apply font-english
 }
 

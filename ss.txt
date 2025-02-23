@@ -1,0 +1,124 @@
+  const valuesArray = Object.keys(formData).map((key) => ({
+      service_form_id: key, // Input ID
+      value: formData[key], // Input value
+    }));
+
+    const submit = {
+      service_id: serviceId,
+      values: valuesArray,
+    };
+
+
+
+
+
+
+
+
+		
+    // const valuesArray = [];
+
+    // // Append form data (text/select fields) to the values array
+    // for (const key in formData) {
+    //   // Skip adding empty file fields
+    //   if (!(files[key] && files[key].length > 0)) {
+    //     valuesArray.push({
+    //       service_form_id: key,
+    //       value: formData[key],
+    //     });
+    //   }
+    // }
+
+    // // Append files to the values array (metadata only)
+    // for (const key in files) {
+    //   const fileList = files[key];
+    //   if (fileList && fileList.length > 0) {
+    //     valuesArray.push({
+    //       service_form_id: key,
+    //       value: Array.from(fileList).forEach((file) => file),
+    //     });
+    //   }
+    //   console.log(fileList);
+    // }
+
+    // // Append files to FormData (actual binary data)
+    // // for (const key in files) {
+    // //   const fileList = files[key];
+    // //   if (fileList && fileList.length > 0) {
+    // //     Array.from(fileList).forEach((file, index) => {
+    // //       formDataToSend.append(`${key}`, file); // Append each file
+    // //     });
+    // //   }
+    // // }
+
+    // const formDataToSend = new FormData();
+
+    // // Append service_id
+    // formDataToSend.append("service_id", serviceId);
+
+    // // Append values in the desired format
+    // valuesArray.forEach((value, index) => {
+    //   formDataToSend.append(
+    //     `values[${index}][service_form_id]`,
+    //     value.service_form_id
+    //   );
+    //   formDataToSend.append(`values[${index}][value]`, value.value);
+    // });
+
+    // // Log FormData contents (for debugging)
+    // for (let [key, value] of formDataToSend.entries()) {
+    //   console.log(key, value);
+    // }
+
+
+
+
+
+		if (input.type === "textarea") {
+                return (
+                  <div className="font-light w-min" key={index}>
+                    <label
+                      htmlFor={input.id}
+                      className="block text-third-color"
+                    >
+                      {input.lable}
+                    </label>
+                    <textarea
+                      id={input.id}
+                      required={input.required === "yes" ? true : false}
+                      type="text"
+                      value={formData[input.id] || ""}
+                      name={input.id}
+                      onChange={handleChange}
+                      className="p-2 border rounded-lg text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color w-[210px] h-10"
+                      rows="4"
+                      placeholder="Enter any additional order notes..."
+                    ></textarea>
+                  </div>
+                );
+              }
+
+
+
+
+
+
+							 <div className="col-span-3 mt-5">
+              <p className="text-sm text-[#666666]">
+                {t("By submitting this form, you agree to our ")}
+                <Link
+                  to={"/terms-conditions"}
+                  className="mx-1 underline text-secondary-color"
+                >
+                  {t("Terms & Conditions")}
+                </Link>
+                {t("and")}
+                <Link
+                  to={"/privacy-policy"}
+                  className="mx-1 underline text-secondary-color"
+                >
+                  {t("Privacy Policy")}
+                </Link>
+                .
+              </p>
+            </div>

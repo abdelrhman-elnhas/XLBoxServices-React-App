@@ -11,8 +11,8 @@ const CategoryItem = ({ image, title, id }) => {
   };
 
   return (
-    <div className="flex flex-col items-center py-8 px-5 rounded-lg justify-between category___item drop-shadow-custom-shadow bg-third-color min-h-[20rem] min-w-[18rem] hover:-translate-y-1 transition ">
-      <img src={image} alt="" width={150} />
+    <div className="flex flex-col items-center py-8 px-5 rounded-lg justify-between category___item drop-shadow-custom-shadow bg-third-color min-h-[20rem] min-w-[18rem] hover:-translate-y-1 transition max-w-48 sm:w-52">
+      <img src={image} alt="" width={150} className="pt-5" />
       <Button
         classes="w-full px-6 py-2 transition rounded-lg bg-primary-color text-third-color hover:bg-primary-color/85"
         handleClick={() => handleNavigation(id)}

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { IoClose } from "react-icons/io5";
+import { createPortal } from "react-dom";
 
 const SubService = ({ image, title, description }) => {
   const [open, setOpen] = useState(false);
@@ -9,14 +10,14 @@ const SubService = ({ image, title, description }) => {
     <>
       <motion.div
         layout
-        className="relative flex flex-col items-center justify-start pb-5 overflow-hidden rounded-lg drop-shadow-custom-shadow bg-third-color h-[410px]"
+        className="relative flex flex-col items-center justify-start pb-5 overflow-hidden rounded-lg drop-shadow-custom-shadow bg-third-color sm:h-[410px] h-[350px]"
       >
-        <img src={image} alt="" className="w-full" />
-        <p className="text-[#666666] font-light leading-6 px-3 py-4 text-balance text-start text-sm overflow-y-hidden h-[108px] line-clamp-4 text-ellipsis">
+        <img src={image} alt="" className="w-full max-h-[200px]" />
+        <p className="text-[#666666] font-light leading-6 px-3 pt-4 pb-2 text-balance text-start text-sm overflow-y-hidden h-[6em] line-clamp-4 text-ellipsis">
           {description}
         </p>
         <button
-          className="px-2 py-3 mx-3 rounded-lg bg-primary-color text-third-color w-[90%] mt-5"
+          className="px-2 py-3 mx-3 rounded-lg bg-primary-color text-third-color w-[90%] mt-auto"
           onClick={(e) => {
             e.stopPropagation();
             setOpen(true);
@@ -25,46 +26,48 @@ const SubService = ({ image, title, description }) => {
           {title}
         </button>
       </motion.div>
+      {createPortal(
+        <AnimatePresence>
+          {open && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed w-full h-full inset-0 z-50 bg-black bg-opacity-75"
+                onClick={() => setOpen(false)}
+              />
 
-      <AnimatePresence>
-        {open && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black bg-opacity-75"
-              onClick={() => setOpen(false)}
-            />
-
-            {/* Expanded Card */}
-            <motion.div
-              layout
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            >
+              {/* Expanded Card */}
               <motion.div
                 layout
-                className="bg-third-color rounded-lg drop-shadow-custom-shadow w-full max-w-xl h-[80vh] overflow-y-auto flex flex-col relative"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
               >
-                <button
-                  className="absolute w-8 h-8  mx-3 mt-5 mb-5 rounded-[50%] top-0 right-4 bg-[#ccccccc0] text-[#666666] flex items-center justify-center"
-                  onClick={() => setOpen(false)}
+                <motion.div
+                  layout
+                  className="bg-third-color rounded-lg drop-shadow-custom-shadow w-full max-w-xl h-[80vh] overflow-y-auto flex flex-col relative"
                 >
-                  <IoClose className="text-2xl" />
-                </button>
-                <img src={image} alt="" className="w-full" />
-                <p className="text-[#666666] font-light leading-6 px-5 py-4 text-balance text-start text-sm overflow-x-auto flex-1">
-                  {description}
-                </p>
+                  <button
+                    className="absolute w-8 h-8  mx-3 mt-5 mb-5 rounded-[50%] top-0 right-4 bg-[#ccccccc0] text-[#666666] flex items-center justify-center"
+                    onClick={() => setOpen(false)}
+                  >
+                    <IoClose className="text-2xl" />
+                  </button>
+                  <img src={image} alt="" className="w-full" />
+                  <p className="text-[#666666] font-light leading-6 px-5 py-4 text-balance text-start text-sm overflow-x-auto flex-1 ">
+                    {description}
+                  </p>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>,
+        document.getElementById("modal-root")
+      )}
     </>
   );
 };

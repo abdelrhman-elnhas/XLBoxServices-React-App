@@ -31,14 +31,20 @@ const Categories = () => {
       <div className="container flex flex-col items-center justify-between">
         <motion.h2
           className="mb-10 text-3xl font-bold text-center text-secondary-color"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 50, opacity: 1 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ amount: 0.6 }}
           transition={{ type: "spring" }}
         >
           {t("Services in our Box")}
         </motion.h2>
-        <motion.div className="grid items-center w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-16 gap-y-12 justify-items-center">
+        <motion.div
+          className="grid items-center justify-center w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(3,minmax(200px,300px))] gap-x-6 lg:gap-x-16 gap-y-12 place-items-center"
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          viewport={{ amount: 0.9 }}
+          transition={{ type: "spring" }}
+        >
           {data?.map((item) => (
             <CategoryItem
               key={item.id}
