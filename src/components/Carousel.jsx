@@ -9,7 +9,7 @@ const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const { data, isLoading, error } = useFetch({
-    url: "https://xlbox.services/backend/api/heros",
+    url: "https://aliceblue-hamster-181008.hostingersite.com/backend/api/heros",
   });
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Carousel = () => {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen py-16 bg-third-color ">
+    <section className="flex flex-col justify-center items-center py-16 min-h-screen bg-third-color">
       <motion.h2
         className="mb-2 text-2xl font-bold text-center text-primary-color text-balance"
         initial={{ x: -50, opacity: 0 }}
@@ -55,7 +55,7 @@ const Carousel = () => {
         {t("Connecting You with Reliable Services for Every Need")}
       </motion.h2>
       <motion.h4
-        className="mb-10 text-lg text-center text-secondary-color "
+        className="mb-10 text-lg text-center text-secondary-color"
         initial={{ x: 50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ type: "spring" }}
@@ -73,7 +73,7 @@ const Carousel = () => {
                 index === currentIndex && (
                   <motion.img
                     key={slide.id}
-                    src={`https://xlbox.services/backend/${slide.photo_url}`}
+                    src={`https://aliceblue-hamster-181008.hostingersite.com/backend/${slide.photo_url}`}
                     alt={slide.alt}
                     initial={{ x: 500, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -98,13 +98,13 @@ const Carousel = () => {
         {/* Arrows */}
         {/* <button
           onClick={prevSlide}
-          className="absolute p-2 transition transform -translate-y-1/2 bg-white rounded-full shadow-md left-2 top-1/2 hover:bg-gray-100"
+          className="absolute left-2 top-1/2 p-2 bg-white rounded-full shadow-md transition transform -translate-y-1/2 hover:bg-gray-100"
         >
           &#8592;
         </button>
         <button
           onClick={nextSlide}
-          className="absolute p-2 transition transform -translate-y-1/2 bg-white rounded-full shadow-md right-2 top-1/2 hover:bg-gray-100"
+          className="absolute right-2 top-1/2 p-2 bg-white rounded-full shadow-md transition transform -translate-y-1/2 hover:bg-gray-100"
         >
           &#8594;
         </button> */}

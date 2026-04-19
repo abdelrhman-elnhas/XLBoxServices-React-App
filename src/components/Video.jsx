@@ -6,7 +6,7 @@ import Loader from "./Loader";
 const Video = () => {
   const { t } = useTranslation();
   const { data, isLoading, error } = useFetch({
-    url: "https://xlbox.services/backend/api/home",
+    url: "https://aliceblue-hamster-181008.hostingersite.com/backend/api/home",
   });
 
   if (isLoading) {
@@ -18,7 +18,7 @@ const Video = () => {
 
   return (
     <section className="flex items-start justify-center min-h-[70vh] py-10 bg-third-color">
-      <div className="container flex flex-col items-center justify-between">
+      <div className="container flex flex-col justify-between items-center">
         <motion.h2
           className="mb-10 text-3xl font-bold text-center text-secondary-color"
           initial={{ y: 50, opacity: 0 }}
@@ -30,7 +30,7 @@ const Video = () => {
         </motion.h2>
         <video width="950" height="500" className="rounded-xl" controls>
           <source
-            src={`https://xlbox.services/backend/${data?.video}`}
+            src={`https://aliceblue-hamster-181008.hostingersite.com/backend/${data?.video}`}
             type="video/mp4"
           />
         </video>

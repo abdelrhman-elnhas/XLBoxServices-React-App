@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 import { useTranslation } from "react-i18next";
 import LoaderSmall from "./LoaderSmall";
 import { Link } from "react-router-dom";
+// import emailjs from "@emailjs/browser";
 
 const Form = ({ inputs, language, serviceId }) => {
   const { t } = useTranslation();
@@ -31,7 +32,6 @@ const Form = ({ inputs, language, serviceId }) => {
     const { name, files: selectedFiles } = event.target;
     setFiles({ ...files, [name]: selectedFiles });
   };
-  console.log(files);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -59,7 +59,7 @@ const Form = ({ inputs, language, serviceId }) => {
 
     try {
       const response = await fetch(
-        "https://xlbox.services/backend/api/services/forms/submit",
+        "https://aliceblue-hamster-181008.hostingersite.com/backend/api/services/forms/submit",
         {
           method: "POST",
           body: formDataToSend,
@@ -69,6 +69,29 @@ const Form = ({ inputs, language, serviceId }) => {
       if (response.ok) {
         console.log("Form submitted successfully!");
         toast.success("Form submitted successfully");
+
+        // const templateParams = {
+        //   service_id: serviceId,
+        //   date: new Date().toLocaleString(),
+        //   time: new Date().toLocaleTimeString(),
+        // };
+
+        // emailjs
+        //   .send(
+        //     "service_ku7kymh",
+        //     "template_fw3iuk8",
+        //     templateParams,
+        //     "QuFoXs3pBH-S7VTC7"
+        //   )
+        //   .then(
+        //     () => {
+        //       console.log("Email sent successfully!");
+        //     },
+        //     (error) => {
+        //       console.error("Email sending failed:", error);
+        //     }
+        //   );
+
         setFormData({});
         setFiles({});
         document.querySelectorAll('input[type="file"]').forEach((input) => {
@@ -95,12 +118,31 @@ const Form = ({ inputs, language, serviceId }) => {
         }}
       />
       <section className="flex flex-col items-center justify-around min-h-[90vh] bg-primary-color py-16">
-        <div className="container flex flex-col items-center justify-center ">
+        <div className="container flex flex-col justify-center items-center">
           <form
             id="quoteForm"
             onSubmit={handleSubmit}
-            className="grid items-start justify-center grid-cols-1 gap-4 mb-5 xs:grid-cols-2 xs:gap-x-7 sm:grid-cols-3  "
+            className="grid grid-cols-1 gap-4 justify-center items-start mb-5 xs:grid-cols-2 xs:gap-x-7 sm:grid-cols-3"
           >
+            {/* <div className="font-light">
+              <label
+                htmlFor="name"
+                className=" text-third-color h-[48px] flex items-end "
+                style={{ verticalAlign: "end" }}
+              >
+                Name*
+              </label>
+              <input
+                required
+                type="text"
+                id="name"
+                value={formData["name"] || ""}
+                name="name"
+                onChange={handleChange}
+                className="p-2 w-full h-10 rounded-lg border text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color"
+              />
+            </div> */}
+
             {inputs.map((input, index) => {
               if (input.type === "text") {
                 return (
@@ -120,7 +162,7 @@ const Form = ({ inputs, language, serviceId }) => {
                       value={formData[input.id] || ""}
                       name={input.id}
                       onChange={handleChange}
-                      className="p-2 border rounded-lg text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color w-full h-10"
+                      className="p-2 w-full h-10 rounded-lg border text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color"
                     />
                   </div>
                 );
@@ -141,7 +183,7 @@ const Form = ({ inputs, language, serviceId }) => {
                       name={input.id}
                       onChange={handleChange}
                       required={input.required === "yes" ? true : false}
-                      className="pt-1 pb-2 ps-2 pe-7 border rounded-lg text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color w-full h-10"
+                      className="pt-1 pb-2 w-full h-10 rounded-lg border ps-2 pe-7 text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color"
                     >
                       <option value="">{t("Choose an option")}</option>
                       {input.options.map((item, index) => (
@@ -161,7 +203,7 @@ const Form = ({ inputs, language, serviceId }) => {
               }
               if (input.type === "file") {
                 return (
-                  <div className="font-light w-min" key={index}>
+                  <div className="w-min font-light" key={index}>
                     <label
                       htmlFor={input.id}
                       className=" text-third-color h-[48px] flex items-end"
@@ -186,7 +228,7 @@ const Form = ({ inputs, language, serviceId }) => {
               if (input.type === "textarea") {
                 return (
                   <div
-                    className="w-full col-span-1 font-light xs:col-span-2 xs:gap-x-7 sm:col-span-3"
+                    className="col-span-1 w-full font-light xs:col-span-2 xs:gap-x-7 sm:col-span-3"
                     key={index}
                   >
                     <label
@@ -204,7 +246,7 @@ const Form = ({ inputs, language, serviceId }) => {
                       name={input.id}
                       onChange={handleChange}
                       style={{ resize: "none" }}
-                      className="w-full p-2 border rounded-lg text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color"
+                      className="p-2 w-full rounded-lg border text-primary-color focus-visible:outline-none focus-visible:border-secondary-color border-primary-color"
                       rows="5"
                     ></textarea>
                   </div>
@@ -236,7 +278,7 @@ const Form = ({ inputs, language, serviceId }) => {
             type="submit"
             form="quoteForm"
             disabled={isSubmitting}
-            className="rounded-lg w-44 h-14 bg-secondary-color text-third-color"
+            className="w-44 h-14 rounded-lg bg-secondary-color text-third-color"
           >
             {isSubmitting ? <LoaderSmall /> : t("Get A Quote")}
           </button>

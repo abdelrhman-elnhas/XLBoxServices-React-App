@@ -13,7 +13,7 @@ const Categories = () => {
   const currentLanguage = i18n.language;
 
   const { data, isLoading, error } = useFetch({
-    url: `https://xlbox.services/backend/api/services?language=${currentLanguage}&paginate=3`,
+    url: `https://aliceblue-hamster-181008.hostingersite.com/backend/api/services?language=${currentLanguage}&paginate=3`,
   });
 
   if (isLoading) {
@@ -28,7 +28,7 @@ const Categories = () => {
       id="services"
       className="flex items-start justify-center min-h-[70vh] py-10 bg-[#f7f7f7]"
     >
-      <div className="container flex flex-col items-center justify-between">
+      <div className="container flex flex-col justify-between items-center">
         <motion.h2
           className="mb-10 text-3xl font-bold text-center text-secondary-color"
           initial={{ y: 50, opacity: 1 }}
@@ -48,7 +48,7 @@ const Categories = () => {
           {data?.map((item) => (
             <CategoryItem
               key={item.id}
-              image={`https://xlbox.services/backend/${item.logo}`}
+              image={`https://aliceblue-hamster-181008.hostingersite.com/backend/${item.logo}`}
               title={item.title}
               id={item.id}
             />

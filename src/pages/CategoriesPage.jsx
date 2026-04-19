@@ -10,7 +10,7 @@ const CategoriesPage = () => {
   const currentLanguage = i18n.language;
 
   const { data, isLoading, error } = useFetch({
-    url: `https://xlbox.services/backend/api/services?language=${currentLanguage}`,
+    url: `https://aliceblue-hamster-181008.hostingersite.com/backend/api/services?language=${currentLanguage}`,
   });
 
   if (isLoading) {
@@ -23,7 +23,7 @@ const CategoriesPage = () => {
 
   return (
     <section className="flex items-start justify-center min-h-[70vh] py-10 bg-[#f7f7f7]">
-      <div className="container flex flex-col items-center justify-between">
+      <div className="container flex flex-col justify-between items-center">
         <motion.h2
           className="mb-10 text-3xl font-bold text-center text-secondary-color"
           initial={{ y: 50, opacity: 0 }}
@@ -34,7 +34,7 @@ const CategoriesPage = () => {
           {t("Services in our Box")}
         </motion.h2>
         <motion.div
-          className="grid items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-16 gap-y-12"
+          className="grid grid-cols-1 gap-x-6 gap-y-12 items-center md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16"
           initial={{ y: 20 }}
           whileInView={{ y: 0 }}
           viewport={{ amount: 0.6 }}
@@ -43,7 +43,7 @@ const CategoriesPage = () => {
           {data?.map((item) => (
             <CategoryItem
               key={item.id}
-              image={`https://xlbox.services/backend/${item.logo}`}
+              image={`https://aliceblue-hamster-181008.hostingersite.com/backend/${item.logo}`}
               title={item.title}
               id={item.id}
             />

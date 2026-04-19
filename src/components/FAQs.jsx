@@ -25,7 +25,7 @@ const FAQs = () => {
   }, []);
 
   const { data, isLoading, error } = useFetch({
-    url: `https://xlbox.services/backend/api/faqs?language=${currentLanguage}`,
+    url: `https://aliceblue-hamster-181008.hostingersite.com/backend/api/faqs?language=${currentLanguage}`,
   });
 
   // Toggle the FAQ state
