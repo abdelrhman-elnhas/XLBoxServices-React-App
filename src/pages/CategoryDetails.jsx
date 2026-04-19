@@ -24,7 +24,7 @@ const CategoryDetails = () => {
   }, []);
 
   const { data, isLoading, error } = useFetch({
-    url: `https://xlbox.services/backend/api/services/${id}?language=${currentLanguage}`,
+    url: `https://aliceblue-hamster-181008.hostingersite.com/backend/api/services/${id}?language=${currentLanguage}`,
   });
 
   if (isLoading) {
@@ -37,7 +37,7 @@ const CategoryDetails = () => {
     <>
       {/* Category Details Section */}
       <section className="bg-[#f7f7f7] border border-b-8 border-third-color flex items-center justify-center">
-        <div className="container flex flex-col items-center gap-8 py-8 justify-evenly">
+        <div className="container flex flex-col gap-8 justify-evenly items-center py-8">
           <h2 className="text-2xl font-bold text-center sm:text-4xl text-primary-color">
             {data?.service.title}
           </h2>
@@ -45,14 +45,14 @@ const CategoryDetails = () => {
             {data.service.images.length > 0 &&
               (data?.service?.images[0]?.type === "image" ? (
                 <img
-                  src={`https://xlbox.services/backend/${data.service.images[0].photo_url}`}
+                  src={`https://aliceblue-hamster-181008.hostingersite.com/backend/${data.service.images[0].photo_url}`}
                   alt=""
                   className="w-full"
                 />
               ) : (
                 <video width="950" height="500" className="rounded-xl" controls>
                   <source
-                    src={`https://xlbox.services/backend/${data.service.images[0].photo_url}`}
+                    src={`https://aliceblue-hamster-181008.hostingersite.com/backend/${data.service.images[0].photo_url}`}
                     type="video/mp4"
                   />
                 </video>
@@ -81,7 +81,7 @@ const CategoryDetails = () => {
               data.subservices.map((service) => (
                 <SubService
                   key={service.id}
-                  image={`https://xlbox.services/backend/${service.image}`}
+                  image={`https://aliceblue-hamster-181008.hostingersite.com/backend/${service.image}`}
                   title={service.title}
                   description={service.descriptions}
                 />
